@@ -13,7 +13,19 @@
 </head>
 <body>
 
-<header id="site-header">
+<header id="site-header" class="has-topbar">
+  <div class="topbar">
+    <div class="wrap">
+      <div class="topbar-links">
+        <a href="mailto:optionone368@gmail.com"><span class="ico">&#9993;</span>optionone368@gmail.com</a>
+        <a href="tel:+254728878644"><span class="ico">&#9742;</span>+254 728 878 644</a>
+      </div>
+      <div class="topbar-links">
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Wholesale Enquiries</a>
+      </div>
+    </div>
+  </div>
   <div class="nav-inner">
     <a class="brand" href="index.html">
       <img src="images/Option%20One%20Logo-01-transparent.png" alt="Option One Flowers logo">
@@ -30,17 +42,18 @@
         <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
     </nav>
-    <a class="nav-call" href="tel:+254728878644">
-      <span class="icon">&#9742;</span> +254 728 878 644
-    </a>
+    <div class="nav-call">
+      <a class="phone" href="tel:+254728878644"><span class="icon">&#9742;</span>+254 728 878 644</a>
+      <a href="contact.html" class="btn pill accent-solid" style="padding:11px 24px;font-size:.7rem;">Get In Touch</a>
+    </div>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">&#9776;</button>
   </div>
 </header>
 
 <section class="page-hero" style="background-image:url('images/srmist102-bouquet-2212337_1920.jpg');">
   <div class="wrap">
-    <span class="eyebrow">Get In Touch</span>
-    <h1>Contact Us</h1>
+    <span class="eyebrow">Welcome To</span>
+    <h1>Contact <span class="hl">Us</span></h1>
     <div class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><span class="current">Contact</span></div>
   </div>
 </section>
@@ -50,7 +63,7 @@
     <div class="contact-grid">
       <div>
         <span class="eyebrow">Reach Us</span>
-        <h2>Visit, Call or Write to Us</h2>
+        <h2>Visit, Call or <span class="hl">Write to Us</span></h2>
         <p style="color:#B3AEE0;">For orders, availability and wholesale enquiries, reach us through any of the channels below. Our team is happy to help.</p>
         <ul class="contact-list">
           <li><span class="k">Address</span><span class="v">Shah Mansion, 1st Floor, Moktar Daddah Street<br>P.O. Box 14153-00100, Nairobi, Kenya</span></li>
@@ -69,40 +82,87 @@
         <div class="mark">&#9742;</div>
         <h4>Call Us</h4>
         <p>Speak directly with our team for orders and enquiries.</p>
-        <a class="btn accent" href="tel:+254728878644">+254 728 878 644</a>
+        <a class="btn pill accent" href="tel:+254728878644">+254 728 878 644</a>
       </div>
       <div class="method-card">
         <div class="mark">&#9993;</div>
         <h4>Email Us</h4>
         <p>Send us your requirements and we'll respond promptly.</p>
-        <a class="btn accent" href="mailto:optionone368@gmail.com">optionone368@gmail.com</a>
+        <a class="btn pill accent" href="mailto:optionone368@gmail.com">optionone368@gmail.com</a>
       </div>
       <div class="method-card">
         <div class="mark">&#9679;</div>
         <h4>WhatsApp Us</h4>
         <p>Message us for quick availability and order updates.</p>
-        <a class="btn accent" href="https://wa.me/254728878644" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <a class="btn pill accent" href="https://wa.me/254728878644" target="_blank" rel="noopener">Chat on WhatsApp</a>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap foot-inner">
-    <a class="brand" href="index.html" style="display:flex;align-items:center;gap:12px;">
-      <img src="images/Option%20One%20Logo-01-transparent.png" alt="Option One Flowers" style="height:32px;">
-      <span class="brand-text"><span class="name">Option One Flowers</span></span>
-    </a>
-    <div class="foot-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="flowers.html">Flowers &amp; Foliage</a>
-      <a href="contact.html">Contact</a>
+  <div class="footer-cta-bar">
+    <div class="wrap">
+      <a class="brand" href="index.html" style="display:flex;align-items:center;gap:12px;">
+        <img src="images/Option%20One%20Logo-01-transparent.png" alt="Option One Flowers" style="height:34px;">
+        <span class="brand-text"><span class="name">Option One Flowers</span></span>
+      </a>
+      <div class="footer-social">
+        <a href="https://wa.me/254728878644" target="_blank" rel="noopener" aria-label="WhatsApp">&#9742;</a>
+        <a href="mailto:optionone368@gmail.com" aria-label="Email">&#9993;</a>
+        <a href="tel:+254733915888" aria-label="Call">&#9742;</a>
+      </div>
+      <a href="contact.html" class="btn pill on-dark">Contact Us</a>
     </div>
-    <span>&copy; <span id="year"></span> Option One Flowers. Nairobi, Kenya.</span>
+  </div>
+  <div class="footer-main">
+    <div class="wrap footer-grid">
+      <div>
+        <h5 class="footer-title">Stay in Touch</h5>
+        <p>Get availability updates and seasonal flower news from Option One Flowers.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit" aria-label="Subscribe">&rarr;</button>
+        </form>
+        <p class="newsletter-note" id="newsletterNote">We'll never share your email.</p>
+      </div>
+      <div>
+        <h5 class="footer-title">Company</h5>
+        <ul class="footer-links-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="flowers.html">Flowers &amp; Foliage</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="footer-title">Get In Touch</h5>
+        <ul class="footer-links-list">
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="tel:+254728878644">+254 728 878 644</a></li>
+          <li><a href="mailto:optionone368@gmail.com">optionone368@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="footer-title">Our Gallery</h5>
+        <div class="footer-gallery">
+          <a href="flowers.html"><img src="images/shop/Rose.png" alt="Rose"></a>
+          <a href="flowers.html"><img src="images/shop/Strelitzia.png" alt="Strelitzia"></a>
+          <a href="flowers.html"><img src="images/shop/Hydrangea.png" alt="Hydrangea"></a>
+          <a href="flowers.html"><img src="images/shop/Gerbera.png" alt="Gerbera"></a>
+          <a href="flowers.html"><img src="images/shop/Tiger%20Lily.png" alt="Tiger Lily"></a>
+          <a href="flowers.html"><img src="images/shop/Sun%20Flower.png" alt="Sun Flower"></a>
+          <a href="flowers.html"><img src="images/shop/Monstera.png" alt="Monstera"></a>
+          <a href="flowers.html"><img src="images/shop/Watsonia.png" alt="Watsonia"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="wrap">&copy; <span id="year"></span> Option One Flowers. Nairobi, Kenya.</div>
   </div>
 </footer>
 
+<button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
 <a class="wa-float" href="https://wa.me/254728878644" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.44 9.9-9.9s-4.44-9.92-9.91-9.92zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.14.82.84-3.06-.2-.32a8.22 8.22 0 1 1 6.98 3.89zm4.51-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.74 2.66 4.22 3.73.59.25 1.05.4 1.41.51.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
 </a>

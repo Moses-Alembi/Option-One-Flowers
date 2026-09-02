@@ -22,6 +22,52 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   }
+
+  var slides = document.querySelectorAll('.hero-slide');
+  if (slides.length) {
+    var dotsWrap = document.getElementById('heroDots');
+    var current = 0;
+    var dots = [];
+    if (dotsWrap) {
+      slides.forEach(function (_, i) {
+        var b = document.createElement('button');
+        if (i === 0) b.className = 'is-active';
+        b.setAttribute('aria-label', 'Show slide ' + (i + 1));
+        b.addEventListener('click', function () { goTo(i); });
+        dotsWrap.appendChild(b);
+        dots.push(b);
+      });
+    }
+    function goTo(i) {
+      slides[current].classList.remove('is-active');
+      if (dots[current]) dots[current].classList.remove('is-active');
+      current = i;
+      slides[current].classList.add('is-active');
+      if (dots[current]) dots[current].classList.add('is-active');
+    }
+    setInterval(function () {
+      goTo((current + 1) % slides.length);
+    }, 6000);
+  }
+
+  var backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', function () {
+      backToTop.classList.toggle('is-visible', window.scrollY > 500);
+    });
+    backToTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  var newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var note = document.getElementById('newsletterNote');
+      if (note) note.textContent = "Thanks! For now, please reach us directly at optionone368@gmail.com.";
+    });
+  }
 });
 
 var FLOWERS = [
