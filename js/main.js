@@ -10,15 +10,35 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', onScroll);
     onScroll();
 
-    var toggle = document.getElementById('menuToggle');
-    if (toggle) {
-      toggle.addEventListener('click', function () {
-        header.classList.toggle('nav-open');
+    var hamburger = document.getElementById('menuToggle');
+    var navMenu = header.querySelector('.main-nav');
+    if (hamburger && navMenu) {
+      var closeNav = function () {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.classList.remove('nav-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      };
+      var openNav = function () {
+        hamburger.classList.add('active');
+        navMenu.classList.add('active');
+        document.body.classList.add('nav-open');
+        hamburger.setAttribute('aria-expanded', 'true');
+      };
+      hamburger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (navMenu.classList.contains('active')) closeNav(); else openNav();
       });
-      document.querySelectorAll('.main-nav a').forEach(function (a) {
-        a.addEventListener('click', function () {
-          header.classList.remove('nav-open');
-        });
+      navMenu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeNav);
+      });
+      document.addEventListener('click', function (e) {
+        if (!navMenu.classList.contains('active')) return;
+        if (navMenu.contains(e.target) || hamburger.contains(e.target)) return;
+        closeNav();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeNav();
       });
     }
   }
@@ -71,35 +91,43 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 var FLOWERS = [
-  ['Rose', 'Rose.png'],
-  ['Red Roses', 'Red%20Roses.png'],
-  ['Strelitzia', 'Strelitzia.png'],
-  ['Arum Lily', 'Arum%20Lily.png'],
-  ['Asiatic Lily', 'Asiatic%20Lily.png'],
-  ['Tiger Lily', 'Tiger%20Lily.png'],
-  ['Gerbera', 'Gerbera.png'],
-  ['Hydrangea', 'Hydrangea.png'],
-  ['Standard Carnation', 'Standard%20Carnation.png'],
-  ['Gladiolus', 'Gladiolus.png'],
-  ['Delphinium', 'Deliphinium.png'],
-  ['Alstromeria', 'Alstromeria.png'],
-  ['Watsonia', 'Watsonia.png'],
-  ['Heliconia', 'Heliconia.png'],
-  ['Sun Flower', 'Sun%20Flower.png'],
-  ['Gypsophila', 'Gypsophilia.png'],
-  ['Hypericum Berries', 'Hypericum%20Berries.png'],
-  ['Solidago', 'Solidago.png']
+  ['Rose', 'Rose.webp'],
+  ['Red Roses', 'Red%20Roses.webp'],
+  ['Strelitzia', 'Strelitzia.webp'],
+  ['Arum Lily', 'Arum%20Lily.webp'],
+  ['Calla Lily', 'Calla%20Lily.webp'],
+  ['Asiatic Lily', 'Asiatic%20Lily.webp'],
+  ['Tiger Lily', 'Tiger%20Lily.webp'],
+  ['Gerbera', 'Gerbera.webp'],
+  ['Hydrangea', 'Hydrangea.webp'],
+  ['Standard Carnation', 'Standard%20Carnation.webp'],
+  ['Gladiolus', 'Gladiolus.webp'],
+  ['Delphinium', 'Deliphinium.webp'],
+  ['Alstromeria', 'Alstromeria.webp'],
+  ['Watsonia', 'Watsonia.webp'],
+  ['Heliconia', 'Heliconia.webp'],
+  ['Sun Flower', 'Sun%20Flower.webp'],
+  ['Gypsophila', 'Gypsophilia.webp'],
+  ['Hypericum Berries', 'Hypericum%20Berries.webp'],
+  ['Solidago', 'Solidago.webp'],
+  ['Snapdragon', 'Snapdragon.webp'],
+  ['Craspedia', 'Craspedia.webp'],
+  ['Veronica', 'Veronica.webp'],
+  ['Pink Anthurium', 'Pink%20Anthurium.webp'],
+  ['Red Anthurium', 'Red%20Anthurium.webp']
 ];
 
 var FOLIAGE = [
-  ['Ruscus', 'Rescus.png'],
-  ['Leather Fern', 'Leather%20Fern.png'],
-  ['Coprosma', 'Coprosma.png'],
-  ['Ivy', 'Ivy.png'],
-  ['Anthurium Leaves', 'Athurium%20Leaves.png'],
-  ['Dracaena / Cordyline', 'DraceneaCordline.png'],
-  ['Monstera', 'Monstera.png'],
-  ['Cycad', 'Cycad.png']
+  ['Ruscus', 'Rescus.webp'],
+  ['Leather Fern', 'Leather%20Fern.webp'],
+  ['Coprosma', 'Coprosma.webp'],
+  ['Ivy', 'Ivy.webp'],
+  ['Anthurium Leaves', 'Athurium%20Leaves.webp'],
+  ['Dracaena / Cordyline', 'DraceneaCordline.webp'],
+  ['Monstera', 'Monstera.webp'],
+  ['Cycad', 'Cycad.webp'],
+  ['Eryngium', 'Eryngium.webp'],
+  ['Eucalyptus', 'Eucalyptus.webp']
 ];
 
 function renderCatalogue(gridId, items, imgBase) {
