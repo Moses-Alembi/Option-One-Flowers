@@ -58,16 +58,83 @@ document.addEventListener('DOMContentLoaded', function () {
         dots.push(b);
       });
     }
+    var heroWord = document.getElementById('heroWord');
+    function setWord(slide) {
+      if (!heroWord) return;
+      var word = slide.getAttribute('data-word');
+      if (!word || word === heroWord.textContent) return;
+      heroWord.classList.add('is-swapping');
+      setTimeout(function () {
+        heroWord.textContent = word;
+        heroWord.classList.remove('is-swapping');
+      }, 350);
+    }
+    // Taken off the stylesheet so the dissolve length can't drift out of step
+    var FADE = (parseFloat(getComputedStyle(slides[0]).transitionDuration) || 1.6) * 1000;
+    var MIN_HOLD = 2600;
+    var timer = null;
+    var startedAt = Date.now();
+
+    // A clip looping back to its first frame while still on screen is the
+    // plainest "it switched" tell there is, so a slide is held only as long as
+    // its own clip can cover it: the dissolve out ends as the clip runs out.
+    function holdFor(slide) {
+      var v = slide.querySelector('video');
+      var d = v ? v.duration : 0;
+      if (!d || !isFinite(d)) return 5200;
+      return Math.max(MIN_HOLD, d * 1000 - FADE - 200);
+    }
+    function schedule() {
+      clearTimeout(timer);
+      var slide = slides[current];
+      var v = slide.querySelector('video');
+      // duration is NaN until metadata lands; redo the sum once it arrives
+      if (v && !(v.duration > 0)) v.addEventListener('loadedmetadata', schedule, { once: true });
+      timer = setTimeout(function () {
+        goTo((current + 1) % slides.length);
+      }, Math.max(400, holdFor(slide) - (Date.now() - startedAt)));
+    }
     function goTo(i) {
-      slides[current].classList.remove('is-active');
+      if (i === current) return;
+      var prev = slides[current];
+      var prevVideo = prev.querySelector('video');
+      prev.classList.remove('is-active');
+      prev.classList.add('is-leaving');
       if (dots[current]) dots[current].classList.remove('is-active');
       current = i;
-      slides[current].classList.add('is-active');
+      startedAt = Date.now();
+      var slide = slides[current];
+      slide.classList.add('is-active');
       if (dots[current]) dots[current].classList.add('is-active');
+      var v = slide.querySelector('video');
+      if (v) {
+        try { v.currentTime = 0; } catch (e) {}
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {});
+      }
+      // Swap the word inside the dissolve rather than on its first frame, so
+      // the copy changing doesn't announce the slide changing
+      setTimeout(function () { setWord(slide); }, FADE * 0.35);
+      // Let the outgoing slide go only once it is completely covered; pausing
+      // it any earlier leaves a frozen frame in plain sight
+      setTimeout(function () {
+        if (prev.classList.contains('is-active')) return;
+        prev.classList.remove('is-leaving');
+        if (prevVideo) prevVideo.pause();
+      }, FADE);
+      schedule();
     }
-    setInterval(function () {
-      goTo((current + 1) % slides.length);
-    }, 6000);
+    // Buffer the clips that aren't on screen yet: a slide arriving still
+    // loading shows its poster and then jumps into motion
+    window.addEventListener('load', function () {
+      slides.forEach(function (s, n) {
+        var v = s.querySelector('video');
+        if (!v || n === current) return;
+        v.preload = 'auto';
+        v.load();
+      });
+    });
+    schedule();
   }
 
   var backToTop = document.getElementById('backToTop');
@@ -93,9 +160,8 @@ document.addEventListener('DOMContentLoaded', function () {
 var FLOWERS = [
   ['Rose', 'Rose.webp'],
   ['Red Roses', 'Red%20Roses.webp'],
-  ['Strelitzia', 'Strelitzia.webp'],
-  ['Arum Lily', 'Arum%20Lily.webp'],
-  ['Calla Lily', 'Calla%20Lily.webp'],
+  ['Strelitzia (Bird of Paradise)', 'Strelitzia.webp'],
+  ['Arum Lily', 'Calla%20Lily.webp'],
   ['Asiatic Lily', 'Asiatic%20Lily.webp'],
   ['Tiger Lily', 'Tiger%20Lily.webp'],
   ['Gerbera', 'Gerbera.webp'],
@@ -126,7 +192,6 @@ var FOLIAGE = [
   ['Dracaena / Cordyline', 'DraceneaCordline.webp'],
   ['Monstera', 'Monstera.webp'],
   ['Cycad', 'Cycad.webp'],
-  ['Eryngium', 'Eryngium.webp'],
   ['Eucalyptus', 'Eucalyptus.webp']
 ];
 

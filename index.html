@@ -21,7 +21,7 @@
 <link rel="icon" href="images/favicon-rose.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&family=Satisfy&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script type="application/ld+json">
 {
@@ -42,8 +42,8 @@
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    "opens": "08:00",
-    "closes": "17:30"
+    "opens": "06:00",
+    "closes": "18:00"
   },
   "foundingDate": "2010",
   "sameAs": ["https://wa.me/254728878644"]
@@ -66,7 +66,6 @@
         <div class="wrap">
           <div class="topbar-links">
             <a href="mailto:optionone368@gmail.com"><span class="ico">&#9993;</span>optionone368@gmail.com</a>
-            <a href="tel:+254728878644"><span class="ico">&#9742;</span>+254 728 878 644</a>
           </div>
           <div class="topbar-links">
             <a href="about.html">About Us</a>
@@ -96,7 +95,6 @@
           </ul>
         </nav>
         <div class="nav-actions">
-          <a class="phone" href="tel:+254728878644"><span class="icon">&#9742;</span>+254 728 878 644</a>
           <a href="contact.html" class="btn pill white-solid" style="padding:11px 24px;font-size:.7rem;">Get In Touch</a>
         </div>
         <button class="hamburger" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -108,38 +106,45 @@
 </header>
 
 <section class="hero" id="top">
-  <div class="hero-slide is-active" style="background-image:url('images/S1.jpg');"></div>
-  <div class="hero-slide" style="background-image:url('images/couleur-roses-1477992_1920.jpg');"></div>
-  <div class="hero-slide" style="background-image:url('images/arrangements/Daisy%20and%20Anthurium%20Basket.webp');background-position:center 62%;"></div>
+  <div class="hero-slide hero-slide--video is-active" data-word="Freshness" style="background-image:url('images/hero-1-poster.jpg');">
+    <video class="hero-video" src="images/hero-1.mp4" poster="images/hero-1-poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+  </div>
+  <div class="hero-slide hero-slide--video" data-word="Beauty" style="background-image:url('images/hero-2-poster.jpg');">
+    <video class="hero-video" src="images/hero-2.mp4" poster="images/hero-2-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  </div>
+  <div class="hero-slide hero-slide--video" data-word="Quality" style="background-image:url('images/hero-3-poster.jpg');">
+    <video class="hero-video" src="images/hero-3.mp4" poster="images/hero-3-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  </div>
   <div class="wrap hero-content">
-    <h1>Bringing Freshness, Beauty and <em class="hl" style="font-style:italic;">Quality</em> to Every Bloom</h1>
-    <p>A Kenyan floral business supplying fresh-cut flowers, arrangements, foliage and floral accessories to hotels, events, retail and the wholesale trade.</p>
+    <h1><span class="line">Bringing <em class="hl hero-word" id="heroWord">Freshness</em></span></h1>
     <div class="hero-actions">
-      <a href="flowers.html" class="btn pill accent-solid">View Our Flowers</a>
-      <a href="contact.html" class="btn pill on-dark">Contact Us</a>
+      <span class="btn pill accent-solid is-static">To Every Bloom</span>
     </div>
   </div>
   <div class="hero-dots" id="heroDots"></div>
+  <svg class="hero-curve" viewBox="0 0 1440 50" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path d="M0,15 C120,30 190,42 274,42 C450,42 640,18 835,18 C1000,18 1080,38 1166,38 C1280,38 1380,20 1440,5 L1440,50 L0,50 Z"/>
+  </svg>
 </section>
 
 <div class="badge-row">
   <div class="wrap badge-grid">
     <div class="badge-card">
-      <div class="photo"><img src="images/couleur-roses-1477992_1920.jpg" alt="Fresh-cut roses"></div>
+      <div class="photo"><img src="images/arrangements/Gladiolus%20and%20Gerbera%20Display.webp" alt="Tall display of gladiolus, gerberas, carnations, stocks and fern foliage"></div>
       <div class="badge"><span>&#10047;</span></div>
       <h4>Fresh-Cut Flowers &amp; Foliage</h4>
       <p>An extensive range of stems and foliage, handled with care and appropriate ventilation to preserve freshness.</p>
       <a href="flowers.html" class="btn pill" style="padding:11px 26px;font-size:.72rem;">View Range</a>
     </div>
     <div class="badge-card">
-      <div class="photo"><img src="images/moroznaya_photo-bouquet-7948558_1920.jpg" alt="Handcrafted flower basket"></div>
+      <div class="photo"><img src="images/arrangements/Chrysanthemum%20and%20Anthurium%20Basket.webp" alt="Basket arrangement of white chrysanthemums, red anthuriums, veronica and variegated foliage"></div>
       <div class="badge"><span>&#10052;</span></div>
       <h4>Custom Arrangements</h4>
       <p>Floral arrangements designed around our clients' tastes, occasions and chosen styles.</p>
       <a href="arrangements.html" class="btn pill" style="padding:11px 26px;font-size:.72rem;">View</a>
     </div>
     <div class="badge-card">
-      <div class="photo"><img src="images/srmist102-bouquet-2212337_1920.jpg" alt="Wedding bouquet"></div>
+      <div class="photo"><img src="images/arrangements/Pink%20Rose%20and%20Lily%20Bouquet.webp" alt="Hand-tied bouquet of pink roses, lilies and chrysanthemums in lilac wrap"></div>
       <div class="badge"><span>&#10022;</span></div>
       <h4>For Orders &amp; Deliveries</h4>
       <p>Supplying hospitality spaces, events, special occasions, retail and wholesale customers.</p>
@@ -160,7 +165,7 @@
 <section class="about">
   <div class="wrap about-grid">
     <div class="about-media">
-      <img src="images/arrangements/Daisy%20and%20Anthurium%20Basket.webp" alt="Basket arrangement with white daisies, anthuriums and veronica" style="height:auto;">
+      <img src="images/arrangements/Rose%20and%20Chrysanthemum%20Heart.webp" alt="Heart-shaped tribute of white chrysanthemums framing red roses, anthuriums and leather fern" style="height:auto;">
       <div class="frame"></div>
     </div>
     <div>
@@ -201,12 +206,24 @@
 <section class="clients">
   <div class="wrap center">
     <span class="eyebrow">Trusted By</span>
-    <h2>Trusted by <span class="hl">Our Clients</span></h2>
+    <h2>Trusted by <span class="hl">Our Esteemed Clients</span></h2>
     <div class="client-logos">
-      <img src="images/clients/Sarova_stanley_logo.png" alt="Sarova Stanley Hotel">
-      <img src="images/clients/12908.jpg" alt="Sarova Lion Hill Game Lodge">
-      <img src="images/clients/7a47_eXr_400x400.jpg" alt="Sarova PanAfric Nairobi" style="background:#7A1E1E;padding:8px;">
-      <img src="images/clients/serena-hotels-logo-png_seeklogo-370620.png" alt="Serena Hotels">
+      <figure class="client-card">
+        <div class="client-logo"><img src="images/clients/Sarova_stanley_logo.png" alt="Sarova Stanley Hotel logo" loading="lazy"></div>
+        <figcaption>Sarova Stanley Hotel</figcaption>
+      </figure>
+      <figure class="client-card">
+        <div class="client-logo"><img src="images/clients/12908.jpg" alt="Sarova Lion Hill Game Lodge logo" loading="lazy"></div>
+        <figcaption>Sarova Lion Hill Game Lodge</figcaption>
+      </figure>
+      <figure class="client-card">
+        <div class="client-logo is-dark"><img src="images/clients/7a47_eXr_400x400.jpg" alt="Sarova PanAfric Nairobi logo" loading="lazy"></div>
+        <figcaption>Sarova PanAfric Nairobi</figcaption>
+      </figure>
+      <figure class="client-card">
+        <div class="client-logo"><img src="images/clients/serena-hotels-logo-png_seeklogo-370620.png" alt="Serena Hotels logo" loading="lazy"></div>
+        <figcaption>Serena Hotels</figcaption>
+      </figure>
     </div>
     <p class="client-note">We are proud to have served established hospitality and wholesale customers across Kenya and beyond, including <strong>Sarova</strong> and <strong>Serena</strong> Hotels. <a href="about.html" style="color:var(--accent);border-bottom:1px solid var(--accent);">Read more about us &rarr;</a></p>
   </div>
@@ -264,7 +281,6 @@
         <a href="mailto:optionone368@gmail.com" aria-label="Email">&#9993;</a>
         <a href="tel:+254728878644" aria-label="Call">&#9742;</a>
       </div>
-      <a href="contact.html" class="btn pill on-dark">Contact Us</a>
     </div>
   </div>
   <div class="footer-main">
@@ -292,20 +308,21 @@
         <ul class="footer-links-list">
           <li><a href="contact.html">Contact Us</a></li>
           <li><a href="tel:+254728878644">+254 728 878 644</a></li>
+          <li><a href="tel:+254733915888">+254 733 915 888</a></li>
           <li><a href="mailto:optionone368@gmail.com">optionone368@gmail.com</a></li>
         </ul>
       </div>
       <div>
         <h5 class="footer-title">Our Gallery</h5>
         <div class="footer-gallery">
-          <a href="flowers.html"><img src="images/shop/Rose.webp" alt="Rose"></a>
-          <a href="flowers.html"><img src="images/shop/Strelitzia.webp" alt="Strelitzia"></a>
-          <a href="flowers.html"><img src="images/shop/Hydrangea.webp" alt="Hydrangea"></a>
-          <a href="flowers.html"><img src="images/shop/Gerbera.webp" alt="Gerbera"></a>
-          <a href="flowers.html"><img src="images/shop/Tiger%20Lily.webp" alt="Tiger Lily"></a>
-          <a href="flowers.html"><img src="images/shop/Sun%20Flower.webp" alt="Sun Flower"></a>
-          <a href="flowers.html"><img src="images/shop/Monstera.webp" alt="Monstera"></a>
-          <a href="flowers.html"><img src="images/shop/Watsonia.webp" alt="Watsonia"></a>
+          <a href="arrangements.html"><img src="images/arrangements/Luxury%20Red%20Rose%20Bouquet.webp" alt="Luxury Red Rose Bouquet" loading="lazy"></a>
+          <a href="arrangements.html"><img src="images/arrangements/Rose%20and%20Bird%20of%20Paradise%20Bouquet.webp" alt="Rose and Bird of Paradise Bouquet" loading="lazy"></a>
+          <a href="arrangements.html"><img src="images/arrangements/Layered%20Dome%20Arrangement.webp" alt="Layered Dome Arrangement" loading="lazy"></a>
+          <a href="arrangements.html"><img src="images/arrangements/Pink%20Rose%20Heart%20Tribute.webp" alt="Pink Rose Heart Tribute" loading="lazy"></a>
+          <a href="arrangements.html"><img src="images/arrangements/Two-Tier%20Lily%20Centrepiece.webp" alt="Two-Tier Lily Centrepiece" loading="lazy"></a>
+          <a href="arrangements.html"><img src="images/arrangements/Grand%20Tiered%20Arrangement.webp" alt="Grand Tiered Arrangement" loading="lazy"></a>
+          <a href="arrangements.html"><img src="images/arrangements/White%20Anthurium%20Wreath.webp" alt="White Anthurium Wreath" loading="lazy"></a>
+          <a href="arrangements.html"><img src="images/arrangements/Vibrant%20Tribute%20Spray.webp" alt="Vibrant Tribute Spray" loading="lazy"></a>
         </div>
       </div>
     </div>
@@ -340,6 +357,23 @@
     tag.textContent = 'Fresh';
     if (thumb) thumb.appendChild(tag);
   });
+  // Endless right-to-left marquee: the cards are duplicated once and the track
+  // slides by exactly one set's width, so the loop point is seamless.
+  (function () {
+    var strip = document.getElementById('stripGrid');
+    if (!strip) return;
+    var track = document.createElement('div');
+    track.className = 'strip-track';
+    while (strip.firstChild) track.appendChild(strip.firstChild);
+    Array.prototype.slice.call(track.children).forEach(function (card) {
+      var copy = card.cloneNode(true);
+      copy.setAttribute('aria-hidden', 'true');
+      track.appendChild(copy);
+    });
+    track.style.setProperty('--strip-duration', (track.children.length / 2 * 3.5) + 's');
+    strip.appendChild(track);
+    strip.classList.add('is-marquee');
+  })();
 </script>
 </body>
 </html>

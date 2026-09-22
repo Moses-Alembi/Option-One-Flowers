@@ -126,8 +126,6 @@ nav.main-nav .nav-icon{display:none;}
 .nav-menu-brand{display:none;}
 
 .nav-actions{display:flex;align-items:center;gap:18px;}
-.nav-actions .phone{display:flex;align-items:center;gap:9px;font-size:.82rem;color:#fff;}
-.nav-actions .icon{color:#fff;}
 
 .hamburger{
   display:none;flex-direction:column;justify-content:center;gap:5px;
@@ -146,6 +144,8 @@ body.nav-open::before{
 
 /* Hero slider (home) */
 .hero{
+  /* Height of the hero hidden under .badge-row's negative margin */
+  --hero-overlap:90px;
   position:relative;
   height:100vh;
   min-height:640px;
@@ -155,15 +155,48 @@ body.nav-open::before{
 .hero-slide{
   position:absolute;inset:0;
   background-size:cover;background-position:center 30%;
-  opacity:0;transition:opacity 1.4s ease;
+  opacity:0;transition:opacity 1.6s linear;
   display:flex;align-items:center;
 }
-.hero-slide::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg, rgba(11,4,82,.6), rgba(11,4,82,.8));
+/* No colour wash over the slides - the photos show in their own colour.
+   Legibility comes from the shadow on .hero-content below. */
+/* This banner is 2.16:1 with a soft left third: on wide screens that empty area
+   sits behind the copy, but a tall phone crop would show nothing but the wash. */
+.hero-slide--soft-left{background-position:left center;}
+@media (max-width:720px){
+  .hero-slide--soft-left{background-position:65% center;}
 }
 .hero-slide.is-active{opacity:1;z-index:1;}
-.hero-content{position:relative;z-index:2;max-width:760px;color:#fff;}
+/* The outgoing slide stays fully opaque one layer down while the incoming one
+   fades in over it. Fading both at once lets the page show through the middle
+   of the dissolve, which is what makes a crossfade read as a switch. */
+.hero-slide.is-leaving{opacity:1;z-index:0;transition:none;}
+/* The clip fills the slide edge to edge - a viewport taller or wider than the
+   16:9 source crops the sides rather than leaving bars. The slide's own
+   background holds the poster, which covers the same way while the clip loads. */
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.hero-slide--video{overflow:hidden;background-position:center;}
+/* Honour reduced-motion: hide the clip and leave the poster showing */
+@media (prefers-reduced-motion:reduce){
+  .hero-video{display:none;}
+}
+.hero-content{position:relative;z-index:2;width:100%;color:#fff;
+  text-shadow:0 1px 4px rgba(11,4,82,.9), 0 4px 22px rgba(11,4,82,.75);}
+/* Hero copy sits nearer the viewport edge than the standard page gutter */
+.hero-content{max-width:none;padding-left:clamp(20px,3vw,44px);}
+.hero-content h1{max-width:760px;}
+.hero h1 .line{display:block;}
+.hero-word{
+  display:inline-block;transition:opacity .35s ease;
+  font-family:'Satisfy',cursive;font-style:normal;font-weight:400;
+  font-size:1.12em;line-height:1;padding-right:.06em;
+}
+.hero-word.is-swapping{opacity:0;}
+/* Rotating word: solid yellow with a crisp (zero-blur) outline instead of the soft glow */
+.hero .hero-word{
+  color:#FFD23F;
+  text-shadow:0 2px 0 var(--green-deep), 1px 0 0 var(--green-deep), -1px 0 0 var(--green-deep), 0 -1px 0 var(--green-deep);
+}
 .hero .eyebrow{color:var(--accent-soft);}
 .hero h1{
   color:#fff;font-size:clamp(2.4rem,5.4vw,4.1rem);font-weight:500;
@@ -171,10 +204,11 @@ body.nav-open::before{
 }
 .hero p{color:#E7E4FF;font-size:1.08rem;max-width:560px;margin-bottom:38px;}
 .hero-actions{display:flex;gap:18px;flex-wrap:wrap;}
+.btn.is-static{cursor:default;pointer-events:none;}
 .btn.on-dark{border-color:rgba(255,255,255,.65);color:#fff;}
 .btn.on-dark:hover{background:#fff;color:var(--green-deep);}
 .hero-dots{
-  position:absolute;bottom:38px;left:50%;transform:translateX(-50%);z-index:3;
+  position:absolute;bottom:calc(var(--hero-overlap) + clamp(36px,5vw,80px) + 24px);left:50%;transform:translateX(-50%);z-index:3;
   display:flex;gap:12px;
 }
 .hero-dots button{
@@ -182,6 +216,12 @@ body.nav-open::before{
   background:transparent;padding:0;cursor:pointer;transition:background .25s ease;
 }
 .hero-dots button.is-active{background:#fff;}
+/* Wavy bottom edge, filled with the page colour so the hero flows into the next section */
+.hero-curve{
+  position:absolute;left:0;right:0;bottom:calc(var(--hero-overlap) - 1px);z-index:2;
+  width:100%;height:clamp(36px,5vw,80px);display:block;pointer-events:none;
+}
+.hero-curve path{fill:var(--ivory);}
 
 /* Page hero (inner pages) */
 .page-hero{
@@ -286,8 +326,22 @@ body.nav-open::before{
 
 /* Clients */
 .clients{background:var(--ivory-deep);}
-.client-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:50px;margin:50px 0 46px;}
-.client-logos img{height:64px;width:auto;max-width:170px;object-fit:contain;filter:grayscale(15%);opacity:.92;}
+.client-logos{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin:50px 0 46px;}
+.client-card{
+  margin:0;background:#fff;border-radius:18px;padding:18px 18px 22px;
+  box-shadow:0 10px 30px rgba(11,4,82,.08);text-align:center;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.client-card:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(11,4,82,.14);}
+.client-logo{
+  height:150px;border-radius:12px;background:#F6F6F8;padding:14px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+}
+.client-logo.is-dark{background:#7A1E1E;}
+.client-logo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;}
+.client-card figcaption{font-weight:500;font-size:1.02rem;color:var(--green-deep);line-height:1.3;}
+@media (max-width:900px){.client-logos{grid-template-columns:repeat(2,1fr);gap:20px;}}
+@media (max-width:420px){.client-logo{height:120px;}.client-card{padding:14px 14px 18px;}.client-card figcaption{font-size:.92rem;}}
 .client-note{max-width:720px;margin:0 auto;text-align:center;color:var(--ink-soft);font-size:.98rem;}
 .client-note strong{color:var(--green-deep);}
 
@@ -331,12 +385,16 @@ body.nav-open::before{
 .method-card h4{color:#fff;font-size:1.1rem;margin-bottom:8px;}
 .method-card p{font-size:.88rem;color:#B3AEE0;margin:0 0 16px;}
 .method-card a.btn{padding:11px 22px;font-size:.72rem;}
+/* The accent blue is a light-background colour; on these dark panels it all but
+   vanishes, so the label goes white and the accent stays on the outline. */
+.method-card a.btn.accent{color:#fff;}
+.method-actions{display:flex;flex-direction:column;align-items:center;gap:12px;}
 
 /* Overlapping-badge highlight cards */
 .badge-row{background:var(--ivory);padding-top:0;margin-top:-90px;position:relative;z-index:5;padding-bottom:0;}
 .badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
 .badge-card{background:#fff;box-shadow:var(--shadow);border:1px solid var(--line);text-align:center;padding:0 26px 34px;}
-.badge-card .photo{height:170px;margin:0 -26px 0;overflow:hidden;}
+.badge-card .photo{aspect-ratio:5/4;margin:0 -26px 0;overflow:hidden;}
 .badge-card .photo img{width:100%;height:100%;object-fit:cover;}
 .badge-card .badge{
   width:74px;height:74px;border-radius:50%;background:#fff;box-shadow:var(--shadow);
@@ -367,6 +425,38 @@ body.nav-open::before{
   font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;
 }
 .strip-card h4{font-size:.98rem;margin:0;padding:14px 10px 18px;border-top:1px solid var(--line);}
+/* Auto-scrolling loop (set up in index.html). Spacing is a right margin rather
+   than flex gap so the duplicated half is exactly 50% of the track. */
+.strip-scroll.is-marquee{
+  display:block;overflow:hidden;padding:16px 0 40px;scroll-snap-type:none;
+  /* Break out of .wrap so the cards run the full width of the screen */
+  width:100vw;margin-left:calc(50% - 50vw);
+}
+/* 100vw includes the vertical scrollbar, so clip the few px it overhangs */
+.catalogue:has(.is-marquee){overflow-x:clip;}
+.strip-track{
+  display:flex;width:max-content;
+  animation:strip-marquee var(--strip-duration,42s) linear infinite;
+}
+.strip-scroll.is-marquee:hover .strip-track{animation-play-state:paused;}
+.strip-track .strip-card{margin-right:22px;}
+/* Lifted card look, matching the client cards */
+.strip-track .strip-card{
+  border:0;border-radius:18px;padding:14px 14px 0;
+  box-shadow:0 10px 30px rgba(11,4,82,.08);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.strip-track .strip-card:hover{transform:translateY(-6px);box-shadow:0 16px 38px rgba(11,4,82,.14);}
+.strip-track .strip-card .thumb{background:#F6F6F8;border-radius:12px;height:190px;}
+/* Photos have white backgrounds; multiply lets them sit cleanly on the grey panel */
+.strip-track .strip-card .thumb img{mix-blend-mode:multiply;}
+.strip-track .strip-card .tag{border-radius:6px;}
+.strip-track .strip-card h4{border-top:0;padding:16px 10px 18px;color:var(--green-deep);}
+@keyframes strip-marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media (prefers-reduced-motion:reduce){
+  .strip-scroll.is-marquee{overflow-x:auto;}
+  .strip-track{animation:none;}
+}
 
 /* Footer */
 footer{background:var(--green-deep);color:#9C97C9;}
@@ -441,8 +531,9 @@ footer{background:var(--green-deep);color:#9C97C9;}
   .moments figure{height:260px;}
   .moments figure:first-child{grid-column:1/-1;height:320px;}
   .accessories-note{grid-template-columns:1fr;text-align:center;}
-  .badge-grid{grid-template-columns:1fr;gap:60px;}
+  .badge-grid{grid-template-columns:1fr;gap:60px;max-width:460px;margin-inline:auto;}
   .badge-row{margin-top:-60px;}
+  .hero{--hero-overlap:60px;}
   .footer-grid{grid-template-columns:1fr 1fr;row-gap:40px;}
   .arrangement-grid{grid-template-columns:repeat(2,1fr);}
 }
