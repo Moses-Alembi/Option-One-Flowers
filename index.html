@@ -349,10 +349,6 @@
     var thumb = el.querySelector('.cat-thumb');
     if (thumb) thumb.classList.remove('cat-thumb');
     if (thumb) thumb.classList.add('thumb');
-    var tag = document.createElement('span');
-    tag.className = 'tag';
-    tag.textContent = 'Fresh';
-    if (thumb) thumb.appendChild(tag);
   });
   // Endless right-to-left marquee: the cards are duplicated once and the track
   // slides by exactly one set's width, so the loop point is seamless.

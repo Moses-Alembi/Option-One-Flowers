@@ -414,10 +414,6 @@ body.nav-open::before{
 }
 .strip-card .thumb{height:200px;padding:16px;display:flex;align-items:center;justify-content:center;position:relative;}
 .strip-card .thumb img{max-height:100%;object-fit:contain;}
-.strip-card .tag{
-  position:absolute;top:12px;left:12px;background:var(--accent);color:#fff;
-  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;
-}
 .strip-card h4{font-size:.98rem;margin:0;padding:14px 10px 18px;border-top:1px solid var(--line);}
 /* Auto-scrolling loop (set up in index.html). Spacing is a right margin rather
    than flex gap so the duplicated half is exactly 50% of the track. */
@@ -444,7 +440,6 @@ body.nav-open::before{
 .strip-track .strip-card .thumb{background:#F6F6F8;border-radius:12px;height:190px;}
 /* Photos have white backgrounds; multiply lets them sit cleanly on the grey panel */
 .strip-track .strip-card .thumb img{mix-blend-mode:multiply;}
-.strip-track .strip-card .tag{border-radius:6px;}
 .strip-track .strip-card h4{border-top:0;padding:16px 10px 18px;color:var(--green-deep);}
 @keyframes strip-marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 @media (prefers-reduced-motion:reduce){
