@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/optionon/public_html/
+    - /bin/cp -f *.html robots.txt sitemap.xml .htaccess $DEPLOYPATH
+    - /bin/cp -Rf css js images $DEPLOYPATH

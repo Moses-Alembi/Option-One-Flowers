@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.optiononeflowers.com/sitemap.xml
+Sitemap: https://optiononeagencies.com/sitemap.xml
