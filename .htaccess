@@ -5,6 +5,7 @@ RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^ https://optiononeagencies.com%{REQUEST_URI} [L,R=301]
 
 DirectoryIndex index.html
+Options -Indexes
 
 # Browser caching for static assets
 <IfModule mod_expires.c>
