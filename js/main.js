@@ -159,7 +159,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 var FLOWERS = [
   ['Rose', 'Rose.webp'],
-  ['Red Roses', 'Red%20Roses.webp'],
   ['Strelitzia (Bird of Paradise)', 'Strelitzia.webp'],
   ['Arum Lily', 'Calla%20Lily.webp'],
   ['Asiatic Lily', 'Asiatic%20Lily.webp'],
