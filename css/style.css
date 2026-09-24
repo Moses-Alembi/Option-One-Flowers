@@ -106,7 +106,7 @@ header.scrolled .topbar{display:none;}
 .nav-main{
   flex:1;display:flex;align-items:center;justify-content:space-between;gap:24px;
   padding:0 28px;min-height:70px;background:var(--accent);
-  border-bottom-left-radius:24px;overflow:hidden;
+  overflow:hidden;
   transition:min-height .3s ease, box-shadow .3s ease;
 }
 header.scrolled .nav-main{
