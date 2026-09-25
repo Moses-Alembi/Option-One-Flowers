@@ -6,22 +6,22 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://optiononeagencies.com/about.html</loc>
+    <loc>https://optiononeagencies.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://optiononeagencies.com/flowers.html</loc>
+    <loc>https://optiononeagencies.com/flowers</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://optiononeagencies.com/arrangements.html</loc>
+    <loc>https://optiononeagencies.com/arrangements</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://optiononeagencies.com/contact.html</loc>
+    <loc>https://optiononeagencies.com/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
