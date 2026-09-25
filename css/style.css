@@ -297,6 +297,7 @@ body.nav-open::before{
 .arrangement-card .info{padding:26px 28px 30px;}
 .arrangement-card h3{font-size:1.2rem;margin-bottom:8px;}
 .arrangement-card p{font-size:.9rem;color:var(--ink-soft);margin:0 0 20px;}
+.arrangement-card .price{font-family:'Jost',sans-serif;font-size:1.05rem;font-weight:600;letter-spacing:.02em;color:var(--accent);margin:0 0 12px;}
 
 /* Quality */
 .quality{
