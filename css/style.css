@@ -388,8 +388,8 @@ body.nav-open::before{
    sit below it with a clear band of page colour between the two. */
 .badge-row{background:var(--ivory);padding-top:clamp(56px,7vw,100px);margin-top:0;position:relative;z-index:5;padding-bottom:0;}
 .badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
-.badge-card{background:#fff;box-shadow:var(--shadow);border:1px solid var(--line);text-align:center;padding:0 26px 34px;}
-.badge-card .photo{aspect-ratio:5/4;margin:0 -26px 0;overflow:hidden;}
+.badge-card{background:#fff;box-shadow:var(--shadow);border:1px solid var(--line);text-align:center;padding:0 26px 34px;display:flex;flex-direction:column;align-items:center;}
+.badge-card .photo{aspect-ratio:5/4;margin:0 -26px 0;align-self:stretch;overflow:hidden;}
 .badge-card .photo img{width:100%;height:100%;object-fit:cover;}
 .badge-card .badge{
   width:74px;height:74px;border-radius:50%;background:#fff;box-shadow:var(--shadow);
@@ -400,6 +400,7 @@ body.nav-open::before{
 .badge-card .badge span{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--accent);}
 .badge-card h4{font-size:1.2rem;margin-bottom:10px;}
 .badge-card p{font-size:.9rem;color:var(--ink-soft);margin-bottom:20px;}
+.badge-card .btn{margin-top:auto;}
 
 /* Horizontal flower strip */
 .strip-scroll{
