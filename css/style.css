@@ -87,7 +87,7 @@ header{
     linear-gradient(90deg, rgba(253,242,234,0) 0%, rgba(253,242,234,.8) 55%, rgba(253,242,234,.8) 90%, rgba(253,242,234,0) 100%),
     url('../images/logo-bg.webp') right center/cover no-repeat,
     #FDF2EA;
-  padding:16px 26px;
+  padding:16px 26px 16px 14px;
   box-shadow:0 2px 20px rgba(11,4,82,.08);
 }
 .logo-panel .brand-text .name{color:#7A1630;}
@@ -538,7 +538,7 @@ footer{background:var(--green-deep);color:#9C97C9;}
    since the horizontal menu + phone + CTA run out of room well before 720px. */
 @media (max-width:1240px){
   .nav-shell{display:flex;align-items:stretch;padding:0;}
-  .logo-panel{flex:1;padding:10px 20px;box-shadow:none;}
+  .logo-panel{flex:1;padding:10px 20px 10px 12px;box-shadow:none;}
   .logo-panel img{height:32px;}
   header.scrolled .logo-panel img{height:28px;}
   .logo-panel .brand-text .name{font-size:1.08rem;}
