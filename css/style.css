@@ -81,13 +81,21 @@ header{
 }
 .logo-panel{
   grid-column:1;display:flex;align-items:center;gap:12px;
-  background:var(--ivory);padding:16px 26px;
+  /* Blush banner with soft roses at the edges, kept pale so the wine-red
+     name and the logo read clearly on top. */
+  background:
+    url('../images/logo-bg-left.webp') left top/auto 100% no-repeat,
+    url('../images/logo-bg-right.webp') right bottom/auto 62% no-repeat,
+    #FDF2EA;
+  padding:16px 26px;
   box-shadow:0 2px 20px rgba(11,4,82,.08);
 }
+.logo-panel .brand-text .name{color:#7A1630;}
+.logo-panel .brand-text .tag{color:#7A1630;letter-spacing:.24em;}
 .logo-panel img{height:44px;width:auto;transition:height .3s ease;}
 header.scrolled .logo-panel img{height:36px;}
 .brand-text{font-family:'Cormorant Garamond',serif;line-height:1.1;}
-.brand-text .name{font-size:1.2rem;font-weight:600;color:var(--green-deep);}
+.brand-text .name{font-family:'EB Garamond',serif;font-size:1.2rem;font-weight:700;white-space:nowrap;color:var(--green-deep);}
 .brand-text .tag{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-family:'Jost',sans-serif;}
 
 .nav-stack{grid-column:2;display:flex;flex-direction:column;}
@@ -533,7 +541,7 @@ footer{background:var(--green-deep);color:#9C97C9;}
   .logo-panel{flex:1;padding:10px 20px;box-shadow:none;}
   .logo-panel img{height:32px;}
   header.scrolled .logo-panel img{height:28px;}
-  .logo-panel .brand-text .name{font-size:1rem;}
+  .logo-panel .brand-text .name{font-size:1.08rem;}
   .logo-panel .brand-text .tag{font-size:.52rem;}
   .nav-stack{flex:0 0 auto;}
   .topbar{display:none;}
@@ -557,8 +565,8 @@ footer{background:var(--green-deep);color:#9C97C9;}
     padding-bottom:18px;margin-bottom:10px;border-bottom:1px solid var(--line);
   }
   .nav-menu-brand img{height:30px;width:auto;}
-  .nav-menu-brand .name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.05rem;color:var(--green-deep);}
-  .nav-menu-brand .tag{display:block;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);}
+  .nav-menu-brand .name{font-family:'EB Garamond',serif;font-weight:700;font-size:1.05rem;color:#7A1630;}
+  .nav-menu-brand .tag{display:block;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:#7A1630;}
 
   nav.main-nav ul{flex-direction:column;align-items:stretch;gap:4px;}
   nav.main-nav a{
