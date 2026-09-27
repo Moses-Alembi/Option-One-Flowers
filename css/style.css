@@ -83,15 +83,12 @@ header{
   grid-column:1;display:flex;align-items:center;gap:12px;
   /* Blush banner with soft roses at the edges, kept pale so the wine-red
      name and the logo read clearly on top. */
-  background:
-    url('../images/logo-bg-left.webp') left top/auto 100% no-repeat,
-    url('../images/logo-bg-right.webp') right bottom/auto 62% no-repeat,
-    #FDF2EA;
+  background:#FDF2EA url('../images/logo-bg.webp') right center/cover no-repeat;
   padding:16px 26px;
   box-shadow:0 2px 20px rgba(11,4,82,.08);
 }
 .logo-panel .brand-text .name{color:#7A1630;}
-.logo-panel .brand-text .tag{color:#7A1630;letter-spacing:.24em;}
+.logo-panel .brand-text .tag{color:#7A1630;letter-spacing:.17em;}
 .logo-panel img{height:44px;width:auto;transition:height .3s ease;}
 header.scrolled .logo-panel img{height:36px;}
 .brand-text{font-family:'Cormorant Garamond',serif;line-height:1.1;}
