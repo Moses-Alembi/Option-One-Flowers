@@ -83,7 +83,10 @@ header{
   grid-column:1;display:flex;align-items:center;gap:12px;
   /* Blush banner with soft roses at the edges, kept pale so the wine-red
      name and the logo read clearly on top. */
-  background:#FDF2EA url('../images/logo-bg.webp') right center/cover no-repeat;
+  background:
+    linear-gradient(90deg, rgba(253,242,234,0) 0%, rgba(253,242,234,.8) 55%, rgba(253,242,234,.8) 90%, rgba(253,242,234,0) 100%),
+    url('../images/logo-bg.webp') right center/cover no-repeat,
+    #FDF2EA;
   padding:16px 26px;
   box-shadow:0 2px 20px rgba(11,4,82,.08);
 }
