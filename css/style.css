@@ -85,7 +85,7 @@ header{
      name and the logo read clearly on top. */
   background:
     linear-gradient(90deg, rgba(253,242,234,0) 0%, rgba(253,242,234,.8) 55%, rgba(253,242,234,.8) 90%, rgba(253,242,234,0) 100%),
-    url('../images/logo-bg.webp') right center/cover no-repeat,
+    url('../images/logo-bg.webp?v=136d7fee') right center/cover no-repeat,
     #FDF2EA;
   padding:16px 26px 16px 14px;
   box-shadow:0 2px 20px rgba(11,4,82,.08);
@@ -314,7 +314,7 @@ body.nav-open::before{
 
 /* Quality */
 .quality{
-  background:linear-gradient(180deg, rgba(11,4,82,.88), rgba(11,4,82,.93)), url('../images/hero-1-poster.jpg') center/cover fixed;
+  background:linear-gradient(180deg, rgba(11,4,82,.88), rgba(11,4,82,.93)), url('../images/hero-1-poster.jpg?v=fdd0b64b') center/cover fixed;
   color:#E7E4FF;
 }
 .quality .eyebrow{color:var(--accent-soft);}

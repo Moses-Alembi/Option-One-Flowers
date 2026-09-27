@@ -28,20 +28,31 @@ Options -Indexes
 </IfModule>
 
 # Never serve dotfiles, repo config or backups
-<FilesMatch "^\.|\.(yml|yaml|md|bak|log|sql|zip|ini)$">
+<FilesMatch "^\.|\.(yml|yaml|md|bak|log|sql|zip|ini|py)$">
   Require all denied
 </FilesMatch>
 
-# Browser caching for static assets
+# Browser caching
+# Pages link to assets as file.ext?v=<content hash> (see tools/version-assets.py),
+# so an asset's URL changes whenever the file does. Those URLs can be cached for
+# a year; pages themselves are always revalidated so visitors see updates at once.
 <IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType image/webp "access plus 1 month"
-  ExpiresByType image/jpeg "access plus 1 month"
-  ExpiresByType image/png "access plus 1 month"
-  ExpiresByType video/mp4 "access plus 1 month"
-  ExpiresByType text/css "access plus 1 week"
-  ExpiresByType application/javascript "access plus 1 week"
-  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresActive Off
+</IfModule>
+<IfModule mod_headers.c>
+  Header unset Expires
+  # Pages: check with the server on every visit (cheap 304 when unchanged)
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # Unversioned assets (e.g. images picked by main.js, favicons, share images): short cache
+  <FilesMatch "\.(css|js|webp|jpe?g|png|gif|svg|ico|mp4)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+  # Versioned assets: the URL changes with the content, so cache long and never revalidate
+  <If "%{QUERY_STRING} =~ /(^|&)v=[0-9a-f]+/">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
 </IfModule>
 
 <IfModule mod_deflate.c>
