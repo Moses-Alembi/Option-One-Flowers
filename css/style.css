@@ -301,7 +301,7 @@ body.nav-open::before{
 
 /* Quality */
 .quality{
-  background:linear-gradient(180deg, rgba(11,4,82,.88), rgba(11,4,82,.93)), url('../images/couleur-roses-1477992_1920.jpg') center/cover fixed;
+  background:linear-gradient(180deg, rgba(11,4,82,.88), rgba(11,4,82,.93)), url('../images/hero-1-poster.jpg') center/cover fixed;
   color:#E7E4FF;
 }
 .quality .eyebrow{color:var(--accent-soft);}
