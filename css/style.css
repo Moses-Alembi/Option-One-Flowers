@@ -88,7 +88,7 @@ header{
   box-shadow:0 2px 20px rgba(11,4,82,.08);
 }
 .logo-panel .brand-text .name{color:#7A1630;}
-.logo-panel .brand-text .tag{color:#7A1630;letter-spacing:.17em;}
+.logo-panel .brand-text .tag{color:#7A1630;letter-spacing:.24em;}
 .logo-panel img{height:44px;width:auto;transition:height .3s ease;}
 header.scrolled .logo-panel img{height:36px;}
 .brand-text{font-family:'Cormorant Garamond',serif;line-height:1.1;}
