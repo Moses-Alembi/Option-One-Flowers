@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=EB+Garamond:wght@600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=c2ae5c29">
+<link rel="stylesheet" href="css/style.css?v=9f7a4676">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -120,8 +120,15 @@
       <p class="lede">A few examples of the custom arrangements we've put together for clients &mdash; bouquets, tiered displays and tribute pieces. Every arrangement is made to order around your occasion, colours and budget.</p>
     </div>
 
+    <div class="occasion-filter" role="group" aria-label="Filter arrangements by occasion">
+      <button type="button" class="active" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="sympathy" aria-pressed="false">Sympathy &amp; Funeral</button>
+      <button type="button" data-filter="gifts" aria-pressed="false">Bouquets &amp; Gifts</button>
+      <button type="button" data-filter="events" aria-pressed="false">Events &amp; D&eacute;cor</button>
+    </div>
+
     <div class="arrangement-grid">
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="events">
         <div class="photo"><img src="images/arrangements/Grand Tiered Arrangement.webp?v=551a1f94" alt="Grand tiered arrangement with red, yellow and white gladiolus, gerberas and carnations" loading="lazy"></div>
         <div class="info">
           <h3>Grand Tiered Arrangement</h3>
@@ -130,7 +137,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="gifts">
         <div class="photo"><img src="images/arrangements/Rose and Bird of Paradise Bouquet.webp?v=561f5ea4" alt="Large wrapped bouquet with red, pink and white roses and bird of paradise" loading="lazy"></div>
         <div class="info">
           <h3>Rose &amp; Bird of Paradise Bouquet</h3>
@@ -139,7 +146,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="sympathy">
         <div class="photo"><img src="images/arrangements/Heart Tribute Arrangement.webp?v=ffe61dca" alt="Heart-shaped tribute arrangement with white chrysanthemums, red roses and anthuriums" loading="lazy"></div>
         <div class="info">
           <h3>Heart Tribute Arrangement</h3>
@@ -148,7 +155,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="gifts events">
         <div class="photo"><img src="images/arrangements/Daisy and Anthurium Basket.webp?v=315ce618" alt="Basket arrangement with white daisies, anthuriums, veronica and variegated foliage" loading="lazy"></div>
         <div class="info">
           <h3>Daisy &amp; Anthurium Basket</h3>
@@ -157,7 +164,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="gifts">
         <div class="photo"><img src="images/arrangements/Luxury Red Rose Bouquet.webp?v=11abc4a6" alt="Large bouquet of solid red roses wrapped in designer black and white paper with a black ribbon" loading="lazy"></div>
         <div class="info">
           <h3>Luxury Red Rose Bouquet</h3>
@@ -166,7 +173,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="sympathy">
         <div class="photo"><img src="images/arrangements/Cross Tribute Arrangement.webp?v=601cc02d" alt="Cross-shaped tribute arrangement with white chrysanthemums, red roses and orange and white anthuriums" loading="lazy"></div>
         <div class="info">
           <h3>Cross Tribute Arrangement</h3>
@@ -175,7 +182,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="sympathy">
         <div class="photo"><img src="images/arrangements/White Standing Wreath.webp?v=75b27a3c" alt="Standing wreath of white chrysanthemums, roses and lilies with green foliage on a metal stand" loading="lazy"></div>
         <div class="info">
           <h3>White Standing Wreath</h3>
@@ -184,7 +191,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="sympathy">
         <div class="photo"><img src="images/arrangements/White and Yellow Casket Spray.webp?v=caf58de2" alt="Low casket spray of white and yellow chrysanthemums, roses and lilies with foliage" loading="lazy"></div>
         <div class="info">
           <h3>White &amp; Yellow Casket Spray</h3>
@@ -193,7 +200,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="sympathy">
         <div class="photo"><img src="images/arrangements/White Heart with Calla Spray.webp?v=7e88bfdd" alt="White chrysanthemum heart with a spray of white calla lilies, roses and greenery" loading="lazy"></div>
         <div class="info">
           <h3>White Heart with Calla Spray</h3>
@@ -202,7 +209,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="events">
         <div class="photo"><img src="images/arrangements/Layered Dome Arrangement.webp?v=a848e5ac" alt="Dome arrangement in layers of cream roses, purple and white chrysanthemums topped with orange lilies" loading="lazy"></div>
         <div class="info">
           <h3>Layered Dome Arrangement</h3>
@@ -211,7 +218,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="events">
         <div class="photo"><img src="images/arrangements/Pastel Chrysanthemum Pedestal.webp?v=56d5d472" alt="Pedestal arrangement of yellow, white and pink chrysanthemums with gladiolus and red accents" loading="lazy"></div>
         <div class="info">
           <h3>Pastel Chrysanthemum Pedestal</h3>
@@ -220,7 +227,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="events">
         <div class="photo"><img src="images/arrangements/Two-Tier Lily Centrepiece.webp?v=642da3c2" alt="Two-tier centrepiece of orange lilies and white flowers on glass stands" loading="lazy"></div>
         <div class="info">
           <h3>Two-Tier Lily Centrepiece</h3>
@@ -229,7 +236,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="sympathy">
         <div class="photo"><img src="images/arrangements/Standing Easel Tribute.webp?v=8ffd0ab6" alt="Standing easel tribute framed in white chrysanthemums with white lily and rose sprays" loading="lazy"></div>
         <div class="info">
           <h3>Standing Easel Tribute</h3>
@@ -238,7 +245,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="sympathy">
         <div class="photo"><img src="images/arrangements/Pink Rose Heart Tribute.webp?v=14069daf" alt="Heart-shaped tribute of pink roses, lisianthus and gypsophila with a personalised ribbon" loading="lazy"></div>
         <div class="info">
           <h3>Pink Rose Heart Tribute</h3>
@@ -247,7 +254,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="sympathy">
         <div class="photo"><img src="images/arrangements/White Heart with Red Anthuriums.webp?v=1b0bc86a" alt="White chrysanthemum heart with a cluster of red anthuriums and foliage" loading="lazy"></div>
         <div class="info">
           <h3>White Heart with Red Anthuriums</h3>
@@ -256,7 +263,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="sympathy">
         <div class="photo"><img src="images/arrangements/White Anthurium Wreath.webp?v=a15b33e1" alt="Round wreath of white chrysanthemums with white anthuriums, roses and greenery" loading="lazy"></div>
         <div class="info">
           <h3>White Anthurium Wreath</h3>
@@ -265,7 +272,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="events">
         <div class="photo"><img src="images/arrangements/Snapdragon and Pink Lily Arrangement.webp?v=db22ea9e" alt="Tall arrangement of white snapdragons above pink lilies, veronica and deep red foliage on a bed of green leaves" loading="lazy"></div>
         <div class="info">
           <h3>Snapdragon &amp; Pink Lily Arrangement</h3>
@@ -274,7 +281,7 @@
           <a href="/contact" class="btn pill accent">Enquire</a>
         </div>
       </div>
-      <div class="arrangement-card">
+      <div class="arrangement-card" data-occasion="gifts">
         <div class="photo"><img src="images/arrangements/Tall Rose and Gerbera Bouquet.webp?v=63583760" alt="Tall wrapped bouquet of cerise roses, pink gerberas, lilac chrysanthemums, lily buds and veronica tied with a pink ribbon" loading="lazy"></div>
         <div class="info">
           <h3>Tall Rose &amp; Gerbera Bouquet</h3>
@@ -375,6 +382,6 @@
   <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg>
 </a>
 
-<script src="js/main.js?v=23852dbe"></script>
+<script src="js/main.js?v=9e48b743"></script>
 </body>
 </html>

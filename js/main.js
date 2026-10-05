@@ -155,6 +155,25 @@ document.addEventListener('DOMContentLoaded', function () {
       if (note) note.textContent = "Thanks! For now, please reach us directly at optionone368@gmail.com.";
     });
   }
+
+  var occasionFilter = document.querySelector('.occasion-filter');
+  if (occasionFilter) {
+    var filterButtons = occasionFilter.querySelectorAll('button');
+    var arrangementCards = document.querySelectorAll('.arrangement-card');
+    occasionFilter.addEventListener('click', function (e) {
+      var btn = e.target.closest('button');
+      if (!btn) return;
+      var filter = btn.getAttribute('data-filter');
+      filterButtons.forEach(function (b) {
+        b.classList.toggle('active', b === btn);
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      arrangementCards.forEach(function (card) {
+        var tags = (card.getAttribute('data-occasion') || '').split(' ');
+        card.hidden = filter !== 'all' && tags.indexOf(filter) === -1;
+      });
+    });
+  }
 });
 
 var FLOWERS = [

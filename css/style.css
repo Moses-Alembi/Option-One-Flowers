@@ -303,6 +303,15 @@ body.nav-open::before{
 .accessories-note p{margin:0;color:var(--ink-soft);}
 
 /* Arrangements */
+.occasion-filter{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:-16px;}
+.occasion-filter button{
+  font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:11px 22px;border-radius:30px;border:1px solid var(--line);background:#fff;color:var(--green-deep);
+  cursor:pointer;transition:all .2s ease;
+}
+.occasion-filter button:hover{border-color:var(--accent);color:var(--accent);}
+.occasion-filter button.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.arrangement-card[hidden]{display:none;}
 .arrangement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:50px;}
 .arrangement-card{background:#fff;border:1px solid var(--line);transition:box-shadow .25s ease, transform .25s ease;}
 .arrangement-card:hover{box-shadow:var(--shadow);transform:translateY(-4px);}
