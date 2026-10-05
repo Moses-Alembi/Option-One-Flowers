@@ -160,9 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (occasionFilter) {
     var filterButtons = occasionFilter.querySelectorAll('button');
     var arrangementCards = document.querySelectorAll('.arrangement-card');
-    occasionFilter.addEventListener('click', function (e) {
-      var btn = e.target.closest('button');
-      if (!btn) return;
+    var applyFilter = function (btn) {
       var filter = btn.getAttribute('data-filter');
       filterButtons.forEach(function (b) {
         b.classList.toggle('active', b === btn);
@@ -172,7 +170,22 @@ document.addEventListener('DOMContentLoaded', function () {
         var tags = (card.getAttribute('data-occasion') || '').split(' ');
         card.hidden = filter !== 'all' && tags.indexOf(filter) === -1;
       });
+    };
+    occasionFilter.addEventListener('click', function (e) {
+      var btn = e.target.closest('button');
+      if (btn) applyFilter(btn);
     });
+    // The homepage occasion circles link here as /arrangements#<filter>
+    var fromHash = function () {
+      var key = location.hash.slice(1);
+      if (!/^[a-z]+$/.test(key)) return;
+      var btn = occasionFilter.querySelector('button[data-filter="' + key + '"]');
+      if (!btn) return;
+      applyFilter(btn);
+      occasionFilter.scrollIntoView({ block: 'start' });
+    };
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
   }
 });
 

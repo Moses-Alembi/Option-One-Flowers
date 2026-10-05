@@ -303,7 +303,7 @@ body.nav-open::before{
 .accessories-note p{margin:0;color:var(--ink-soft);}
 
 /* Arrangements */
-.occasion-filter{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:-16px;}
+.occasion-filter{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:-16px;scroll-margin-top:140px;}
 .occasion-filter button{
   font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
   padding:11px 22px;border-radius:30px;border:1px solid var(--line);background:#fff;color:var(--green-deep);
@@ -407,24 +407,25 @@ body.nav-open::before{
 .method-card a.btn.accent{color:#fff;}
 .method-actions{display:flex;flex-direction:column;align-items:center;gap:12px;}
 
-/* Overlapping-badge highlight cards */
-/* The cards used to be pulled up over the hero by a negative margin; they now
-   sit below it with a clear band of page colour between the two. */
-.badge-row{background:var(--ivory);padding-top:clamp(56px,7vw,100px);margin-top:0;position:relative;z-index:5;padding-bottom:0;}
-.badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
-.badge-card{background:#fff;box-shadow:var(--shadow);border:1px solid var(--line);text-align:center;padding:0 26px 34px;display:flex;flex-direction:column;align-items:center;}
-.badge-card .photo{aspect-ratio:5/4;margin:0 -26px 0;align-self:stretch;overflow:hidden;}
-.badge-card .photo img{width:100%;height:100%;object-fit:cover;}
-.badge-card .badge{
-  width:74px;height:74px;border-radius:50%;background:#fff;box-shadow:var(--shadow);
-  display:flex;align-items:center;justify-content:center;margin:-37px auto 18px;
-  border:1px solid var(--line);
+/* Shop-by-occasion row: round photos linking to the filtered arrangements page */
+.occasions{padding:clamp(56px,7vw,100px) 0 0;}
+.occasions-title{text-align:center;font-size:clamp(1.6rem,3vw,2.3rem);margin:0 auto 44px;max-width:820px;}
+.occasion-row{display:grid;grid-template-columns:repeat(6,1fr);gap:28px;}
+.occasion-card{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;color:var(--ink);}
+.occasion-photo{display:block;width:100%;aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:var(--shadow);}
+.occasion-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+.occasion-card:hover .occasion-photo img,.occasion-card:focus-visible .occasion-photo img{transform:scale(1.06);}
+.occasion-name{font-weight:500;font-size:.98rem;transition:color .25s ease;}
+.occasion-card:hover .occasion-name,.occasion-card:focus-visible .occasion-name{color:var(--accent);}
+@media (max-width:980px){
+  .occasion-row{grid-template-columns:repeat(3,1fr);row-gap:36px;max-width:640px;margin-inline:auto;}
 }
-.badge-card .badge img{width:36px;height:36px;object-fit:contain;}
-.badge-card .badge span{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--accent);}
-.badge-card h4{font-size:1.2rem;margin-bottom:10px;}
-.badge-card p{font-size:.9rem;color:var(--ink-soft);margin-bottom:20px;}
-.badge-card .btn{margin-top:auto;}
+@media (max-width:720px){
+  /* Swipeable row on phones, like the flower strip */
+  .occasion-row{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 16px;max-width:none;-webkit-overflow-scrolling:touch;}
+  .occasion-card{flex:0 0 132px;scroll-snap-align:start;}
+  .occasion-name{font-size:.9rem;}
+}
 
 /* Horizontal flower strip */
 .strip-scroll{
@@ -546,10 +547,6 @@ footer{background:var(--green-deep);color:#9C97C9;}
   .moments figure{height:260px;}
   .moments figure:first-child{grid-column:1/-1;height:320px;}
   .accessories-note{grid-template-columns:1fr;text-align:center;}
-  .badge-grid{gap:18px;}
-  .badge-card{padding:0 16px 28px;}
-  .badge-card .photo{margin:0 -16px;}
-  .badge-card .btn.pill{padding:13px 16px;letter-spacing:.1em;white-space:nowrap;}
   .footer-grid{grid-template-columns:1fr 1fr;row-gap:40px;}
   .arrangement-grid{grid-template-columns:repeat(2,1fr);}
 }
@@ -621,7 +618,6 @@ footer{background:var(--green-deep);color:#9C97C9;}
   .topbar .wrap{justify-content:center;text-align:center;}
   .topbar-links{justify-content:center;}
   .footer-grid{grid-template-columns:1fr;}
-  .badge-grid{grid-template-columns:1fr;gap:40px;max-width:460px;margin-inline:auto;}
   .footer-gallery{grid-template-columns:repeat(4,1fr);max-width:320px;}
   .strip-card{flex-basis:160px;}
   .strip-card .thumb{height:160px;}
