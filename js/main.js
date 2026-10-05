@@ -236,3 +236,40 @@ function renderCatalogue(gridId, items, imgBase) {
     grid.appendChild(card);
   });
 }
+
+// Page catalogues. These used to be inline <script>s in the pages; they live
+// here so the Content-Security-Policy can refuse all inline script.
+// main.js is loaded at the end of <body>, so the elements already exist.
+if (document.getElementById('flowerGrid')) {
+  renderCatalogue('flowerGrid', FLOWERS, 'images/shop/');
+  renderCatalogue('foliageGrid', FOLIAGE, 'images/shop/');
+  document.getElementById('flowerCount').textContent = FLOWERS.length + ' Varieties';
+  document.getElementById('foliageCount').textContent = FOLIAGE.length + ' Varieties';
+}
+
+if (document.getElementById('stripGrid')) {
+  renderCatalogue('stripGrid', FLOWERS.concat(FOLIAGE).slice(0, 12), 'images/shop/');
+  document.querySelectorAll('#stripGrid .cat-card').forEach(function (el) {
+    el.classList.remove('cat-card');
+    el.classList.add('strip-card');
+    var thumb = el.querySelector('.cat-thumb');
+    if (thumb) thumb.classList.remove('cat-thumb');
+    if (thumb) thumb.classList.add('thumb');
+  });
+  // Endless right-to-left marquee: the cards are duplicated once and the track
+  // slides by exactly one set's width, so the loop point is seamless.
+  (function () {
+    var strip = document.getElementById('stripGrid');
+    var track = document.createElement('div');
+    track.className = 'strip-track';
+    while (strip.firstChild) track.appendChild(strip.firstChild);
+    Array.prototype.slice.call(track.children).forEach(function (card) {
+      var copy = card.cloneNode(true);
+      copy.setAttribute('aria-hidden', 'true');
+      track.appendChild(copy);
+    });
+    track.style.setProperty('--strip-duration', (track.children.length / 2 * 3.5) + 's');
+    strip.appendChild(track);
+    strip.classList.add('is-marquee');
+  })();
+}

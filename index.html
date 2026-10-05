@@ -310,33 +310,6 @@
   <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg>
 </a>
 
-<script src="js/main.js?v=adbe41f0"></script>
-<script>
-  renderCatalogue('stripGrid', FLOWERS.concat(FOLIAGE).slice(0, 12), 'images/shop/');
-  document.querySelectorAll('#stripGrid .cat-card').forEach(function (el) {
-    el.classList.remove('cat-card');
-    el.classList.add('strip-card');
-    var thumb = el.querySelector('.cat-thumb');
-    if (thumb) thumb.classList.remove('cat-thumb');
-    if (thumb) thumb.classList.add('thumb');
-  });
-  // Endless right-to-left marquee: the cards are duplicated once and the track
-  // slides by exactly one set's width, so the loop point is seamless.
-  (function () {
-    var strip = document.getElementById('stripGrid');
-    if (!strip) return;
-    var track = document.createElement('div');
-    track.className = 'strip-track';
-    while (strip.firstChild) track.appendChild(strip.firstChild);
-    Array.prototype.slice.call(track.children).forEach(function (card) {
-      var copy = card.cloneNode(true);
-      copy.setAttribute('aria-hidden', 'true');
-      track.appendChild(copy);
-    });
-    track.style.setProperty('--strip-duration', (track.children.length / 2 * 3.5) + 's');
-    strip.appendChild(track);
-    strip.classList.add('is-marquee');
-  })();
-</script>
+<script src="js/main.js?v=cb8bd810"></script>
 </body>
 </html>
