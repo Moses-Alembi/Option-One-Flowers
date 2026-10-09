@@ -232,7 +232,18 @@ function renderCatalogue(gridId, items, imgBase) {
   items.forEach(function (item) {
     var card = document.createElement('div');
     card.className = 'cat-card';
-    card.innerHTML = '<div class="cat-thumb"><img loading="lazy" src="' + imgBase + item[1] + '" alt="' + item[0] + '"></div><h4>' + item[0] + '</h4>';
+    // Built with DOM methods rather than innerHTML so names can never be read as HTML
+    var thumb = document.createElement('div');
+    thumb.className = 'cat-thumb';
+    var img = document.createElement('img');
+    img.loading = 'lazy';
+    img.src = imgBase + item[1];
+    img.alt = item[0];
+    thumb.appendChild(img);
+    var title = document.createElement('h4');
+    title.textContent = item[0];
+    card.appendChild(thumb);
+    card.appendChild(title);
     grid.appendChild(card);
   });
 }
